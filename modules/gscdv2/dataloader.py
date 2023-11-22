@@ -60,11 +60,11 @@ class DataLoader:
         # Create PyTorch dataloaders for train and dev set
         num_workers = int(proj.num_cpu_threads / 4)
         self.train_loader = data.DataLoader(dataset=train_set, batch_size=batch_size, shuffle=True,
-                                            num_workers=num_workers, collate_fn=collate_fn)
+                                            num_workers=num_workers, collate_fn=collate_fn, pin_memory=True)
         self.dev_loader = data.DataLoader(dataset=dev_set, batch_size=batch_size_test, shuffle=False,
-                                          num_workers=num_workers, collate_fn=collate_fn)
+                                          num_workers=num_workers, collate_fn=collate_fn, pin_memory=True)
         self.test_loader = data.DataLoader(dataset=test_set, batch_size=batch_size_test, shuffle=False,
-                                           num_workers=num_workers, collate_fn=collate_fn)
+                                           num_workers=num_workers, collate_fn=collate_fn, pin_memory=True)
 
 
 class GSCDDataset(data.Dataset):
